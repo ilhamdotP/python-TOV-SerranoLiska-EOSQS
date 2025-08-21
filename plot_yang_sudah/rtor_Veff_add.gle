@@ -1,0 +1,92 @@
+size 12 18                             !Sets the size of the paper
+
+set texlabels 1
+
+amove 0.5 9.5
+begin graph
+        size 12 9                      !Sets the size of the graph
+		data "Veff_tau/17-B=57,BT=57,a4=0.7,a4T=0.07,w=1,ct=1e7/l=2/rtorSL_input.dat"   d30=c2,c3 
+		data "Veff_tau/17-B=57,BT=57,a4=0.7,a4T=0.07,w=1,ct=1e7/l=2/rtorSL_input.dat"   d31=c2,c4 
+		data "Veff_tau/17-B=57,BT=57,a4=0.7,a4T=0.07,w=1,ct=1e7/l=2/rtorSL_input.dat"   d32=c2,c7
+		yaxis min 0 max 1.4 nticks 5 hei .5 grid
+		xaxis min -55 max 10 nticks 5 hei .5 grid
+		!ytitle "$r ($km$)$"  hei .5
+        xtitle "$r_* ($km$)$" hei .5
+
+		d30 line lstyle 1 lwidth 0.06 color orange
+        d31 line lstyle 2 lwidth 0.06 color blue
+		d32 line lstyle 3 lwidth 0.06 color red
+        !key pos tl hei 0.4
+		ticks color gray10
+end graph 
+
+begin key
+position tr
+hei .35
+ nobox
+   line lstyle 1 lwidth 0.06 color orange           text "$\rho$ ($10^{15}$ g/cm$^3$)"
+   line lstyle 2 lwidth 0.06 color blue             text "$P$ ($10^{15}$ g/cm$^3$)"
+   line lstyle 3 lwidth 0.06 color red              text "$\Lambda$ ($10^{30}$ g$^2$/cm$^6$)"
+end key
+
+!begin key
+!position tl
+!hei .35
+! nobox
+!  text "$B=B_{\perp}=1.02\times10^{14}$ g/cm$^3$"
+!  text "$a_{4}=0.7, a_{4\perp}=0.07$"
+!  text "$w=1,\tilde{c}=10^7$ m$^2$"
+!end key
+
+begin key
+position bl
+hei .35
+ nobox
+  !text "$P_c=500$ MeV/fm$^3$"
+  !text "$P_c=0.89135\times10^{15}$ g/cm$^3$"
+end key
+
+begin key
+position br
+hei .35
+ nobox
+  text "(a)"
+end key
+
+amove 0.5 0.5
+begin graph
+        size 12 9                      !Sets the size of the graph
+        
+		data "Veff_tau/17-B=57,BT=57,a4=0.7,a4T=0.07,w=1,ct=1e7/l=2/rtorSL_input.dat"   d30=c2,c5 
+		data "Veff_tau/17-B=57,BT=57,a4=0.7,a4T=0.07,w=1,ct=1e7/l=2/rtorSL_input.dat"   d31=c2,c6 
+		data "Veff_tau/17-B=57,BT=57,a4=0.7,a4T=0.07,w=1,ct=1e7/l=2/rtorSL_input.dat"   d32=c2,c8
+
+		yaxis min -.6 max 1 nticks 5 hei .5 grid
+		xaxis min -55 max 10 nticks 5 hei .5 grid
+        !ytitle "$(GM)^2 V_{eff}$"  hei .5
+		xtitle "$r_*$ (km)" hei .5
+
+		d30 line lstyle 4 lwidth 0.06 color black
+        d31 line lstyle 5 lwidth 0.06 color blue
+		d32 line lstyle 6 lwidth 0.06 color red
+
+		!key pos tl hei 0.4
+		ticks color gray10
+end graph 
+!marker circle msize 0.2 
+
+begin key
+position tr
+hei .35
+ nobox
+   line lstyle 4 lwidth 0.06 color black           text "$e^{2\alpha}$"
+   line lstyle 5 lwidth 0.06 color blue             text "$e^{-2\beta}$"
+   line lstyle 6 lwidth 0.06 color red              text "$\frac{\Delta}{\rho-P}$"
+end key
+
+begin key
+position br
+hei .35
+ nobox
+  text "(b)"
+end key

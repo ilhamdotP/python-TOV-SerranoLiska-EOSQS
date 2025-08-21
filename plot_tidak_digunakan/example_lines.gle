@@ -1,0 +1,193 @@
+!lines.gle - Demonstrates the various options for lines and markers
+size 10 8
+
+set hei 0.5 
+set just CC                     !Adds a title
+amove 5 7.5
+text Line styles and markers
+
+set hei 0.3 
+set just LC             !Adds a title and box to the different line styles
+amove 0.7 6.5
+
+begin box add 0.25 
+        text Different line styles
+
+        rmove 0 -0.5                    !Draws the various line style options
+        set lstyle 0                    !Ideally this should be placed 
+                                        !within a subroutine
+        rline 2 0                       !See following section
+        text \glass \: \: 0
+
+        rmove -2 -0.5
+        set lstyle 1
+        rline 2 0
+        text \glass \: \: 1
+
+        rmove -2 -0.5
+        set lstyle 2
+        rline 2 0
+        text \glass \: \: 2
+
+        rmove -2 -0.5
+        text \glass \: \: ...and so on
+
+        rmove 0 -0.5
+        set lstyle 8
+        rline 2 0
+        text \glass \: \: 8
+
+        rmove -2 -0.5
+        set lstyle 9
+        rline 2 0
+        text \glass \: \: 9
+
+        rmove -2 -0.7           !We can produce a line from a combination of    
+        set lstyle 9229         !the other line styles
+        rline 2 0
+        text \glass \: \: 9229
+
+        set lstyle 1
+end box
+
+
+amove 4.6 6.5                   !Demonstrates the different markers available
+
+set lwidth 0.05 
+rline 0 -2
+
+set lwidth 0.0001
+rmove 0 0.5
+marker wcircle 0.8
+text \glass \: wcircle
+
+rmove 0 0.5
+marker fcircle 0.8
+text \glass \: fcircle
+
+rmove 0 0.5 
+marker circle 0.8
+text \glass \: circle
+
+amove 6.4 6.5
+ 
+set lwidth 0.05
+rline 0 -2
+
+set lwidth 0.0001
+rmove 0 0.5
+marker wsquare 0.8
+text \glass \: wsquare
+
+rmove 0 0.5
+marker fsquare 0.8
+text \glass \: fsquare
+
+rmove 0 0.5
+marker square 0.8
+text \glass \: square
+
+amove 8.4 6.5
+
+set lwidth 0.05 
+rline 0 -2
+
+set lwidth 0.0001
+rmove 0 0.5
+marker wdiamond
+text \glass \: wdiamond
+
+rmove 0 0.5 
+marker fdiamond
+text \glass \: fdiamond
+
+rmove 0 0.5
+marker diamond
+text \glass \: diamond
+
+
+
+amove 5 4                       !Draws examples of the different line widths
+set lwidth 0.2
+rline 1 0
+text \glass \: 0.2
+
+rmove -1 -0.3
+set lwidth 0.1
+rline 1 0
+text \glass \: 0.1
+
+rmove -1 -0.3
+set lwidth 0.05
+rline 1 0
+text \glass \: 0.05
+
+rmove -1 -0.3
+set lwidth 0.02
+rline 1 0
+text \glass \: 0.02
+
+amove 7.5 4
+
+set lwidth 0.01
+rline 1 0
+text \glass \: 0.01
+
+rmove -1 -0.3
+set lwidth 0.005
+rline 1 0
+text \glass \: 0.005
+
+rmove -1 -0.3
+set lwidth 0.0001
+rline 1 0
+text \glass \: 0.0001
+
+rmove -1 -0.3
+set lwidth 0
+rline 1 0
+text \glass \: 0
+
+ 
+amove 0.5 0.5                   !Shows the different options for ending a line
+box 2 1.5
+
+rmove 0 0.25
+set cap square 
+set lwidth 0.2 
+set hei 0.3
+rline 2 0 
+text \glass \: set cap square
+
+rmove -2 0.5
+set cap round 
+rline 2 0
+text \glass \: set cap round
+
+rmove -2 0.5
+set cap butt
+rline 2 0
+text \glass \: set cap butt
+
+
+amove 5.5 2.5                   !Shows the different options for joining lines
+set lwidth 0.1 
+set just CC                     !Notice that the path is split - this is significant
+set join mitre
+rline 4 0
+rline 0 -1
+set join round
+rline 0 -1
+rline -2 0
+set join bevel
+rline -2 0
+rline 0 2
+
+rmove 0.5 -0.25                 !Adds text labels to the various joins
+rmove 3 0                       !We could not have done this within the 
+                                !join commands themselves - see main text
+text mitre
+rmove 0 -1.5
+text round
+rmove -3 0
+text bevel

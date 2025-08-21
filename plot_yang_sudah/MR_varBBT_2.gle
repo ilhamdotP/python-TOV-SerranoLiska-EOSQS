@@ -1,0 +1,70 @@
+size 12 10                              !Sets the size of the paper
+
+set texlabels 1
+
+GS = 1.325*10^(-12)
+MSS = 1.1155*10^(15)
+
+sub photonring x
+   return 10^3/(3*GS*MSS)*x
+end sub
+
+amove 0.5 0.5
+begin graph
+        size 12 10                      !Sets the size of the graph
+        !begin layer 301
+        let d73 = 2.01 from 2 to 15
+        let d74 = 2.16 from 2 to 15
+        fill d73,d74 color rgba255(244,164,96,100) !sandybrown
+        !end layer
+        !begin layer 302
+        let d75 = 1.97 from 2 to 15
+        let d76 = 2.05 from 2 to 15
+        fill d75,d76 color rgba255(205,92,92,100) !indianred
+        !end layer
+        !begin layer 300
+        let d71 = 1.17 from 2 to 15
+        let d72 = 1.6 from 2 to 15
+        fill d71,d72 color rgba255(32,178,170,100) !lightseagreen
+        !end layer
+		data "nonTOV/0-B=57,BT=57,a4=0.7,a4T=0.7,w=0.333,ct=1e0/radmassSL.dat"   d30=c3,c4 
+		data "nonTOV/1-B=92,BT=57,a4=0.7,a4T=0.7,w=0.333,ct=1e0/radmassSL.dat"   d31=c3,c4 
+		data "nonTOV/2-B=57,BT=92,a4=0.7,a4T=0.7,w=0.333,ct=1e0/radmassSL.dat"   d32=c3,c4 
+		data "nonTOV/3-B=92,BT=92,a4=0.7,a4T=0.7,w=0.333,ct=1e0/radmassSL.dat"   d33=c3,c4 
+		yaxis min 0 max 2.25 dticks .5 hei .5 grid
+		xaxis min 2 max 12 dticks 2 hei .5 grid
+        ytitle "$M (M_{\odot})$"  hei .5
+		xtitle "$R ($km$)$" hei .5
+		d30 line lstyle 0 lwidth 0.06 color red
+		d31 line lstyle 1 lwidth 0.06 color blue
+		d32 line lstyle 2 lwidth 0.06 color green
+		d33 line lstyle 3 lwidth 0.06 color yellow
+		let d2 = photonring(x) from 0 to 11
+		d2 line lstyle 0 lwidth 0.02 color black
+		!key pos tl hei 0.4
+		ticks color gray10
+end graph 
+!marker circle msize 0.2 
+
+begin key
+position tl
+hei .28
+ nobox
+ text "$a_{4}=a_{4\perp}=0.7,w=1/3,\tilde{c}=1$ m$^2$"
+		line lstyle 1 lwidth 0.06 color blue            text "$(B,B_{\perp})=(1.64,1.02)\times10^{14}$ g/cm$^3$"
+		line lstyle 2 lwidth 0.06 color green           text "$(B,B_{\perp})=(1.02,1.64)\times10^{14}$ g/cm$^3$"
+		line lstyle 0 lwidth 0.06 color red             text "$B=B_{\perp}=1.02\times10^{14}$ g/cm$^3$"
+		line lstyle 3 lwidth 0.06 color yellow          text "$B=B_{\perp}=1.64\times10^{14}$ g/cm$^3$"
+		line lstyle 0 lwidth 0.02 color black			text "Photon Sphere"
+end key
+
+
+
+begin key
+hei .28
+  nobox
+    position br
+    fill rgba255(244,164,96,100) text "Rezzolla et al. (2018)" ! "Astrophys. J. Lett. \textbf{852}, L25 (2018)"
+    fill rgba255(205,92,92,100) text "Antoniadis et al. (2013)" ! "Science \textbf{340}, 6131 (2013)"
+    fill rgba255(32,178,170,100) text "Abbott et al. (2017)" ! "Phys. Rev. Lett. \textbf{119}, 161101 (2017)"
+  end key

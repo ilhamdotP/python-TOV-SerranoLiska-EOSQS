@@ -1,0 +1,95 @@
+size 12 18                             !Sets the size of the paper
+
+set texlabels 1
+
+amove 0.5 9.5
+begin graph
+        size 12 9                      !Sets the size of the graph
+		data "Veff_tau/17-B=57,BT=57,a4=0.7,a4T=0.07,w=1,ct=1e7/l=2/rtorSL.dat"   d30=c2,c1 
+		data "Veff_tau/17-B=57,BT=57,a4=0.7,a4T=0.07,w=1,ct=1e7/l=2/rtorSL_int.dat"   d31=c2,c1
+		yaxis min 0 max 100 dticks 20 hei .5
+		xaxis min -60 max 140 dticks 30 hei .5
+		ytitle "$r ($km$)$"  hei .5
+        xtitle "$r_* ($km$)$" hei .5
+		d30 line lstyle 0 lwidth 0.06 color blue
+        d31 line lstyle 0 lwidth 0.06 color blue
+        !key pos tl hei 0.4
+end graph 
+
+begin key
+position tl
+hei .35
+ nobox
+  text "$B=B_{\perp}=57$ MeV"
+  text "$a_{4}=0.7, a_{4\perp}=0.07$"
+  text "$w=1,\tilde{c}=10^7$ m$^2$"
+end key
+
+begin key
+position bl
+hei .35
+ nobox
+  !text "$P_c=500$ MeV/fm$^3$"
+end key
+
+begin key
+position br
+hei .35
+ nobox
+  text "(a)"
+end key
+
+amove 0.5 0.5
+begin graph
+        size 12 9                      !Sets the size of the graph
+
+		data "Veff_tau/17-B=57,BT=57,a4=0.7,a4T=0.07,w=1,ct=1e7/l=2/rtorSL.dat"   d30=c2,c3 
+		data "Veff_tau/17-B=57,BT=57,a4=0.7,a4T=0.07,w=1,ct=1e7/l=2/rtorSL_int.dat"   d31=c2,c3
+        
+		data "Veff_tau/17-B=57,BT=57,a4=0.7,a4T=0.07,w=1,ct=1e7/l=2/rtorSL.dat"   d40=c2,c4 
+		data "Veff_tau/17-B=57,BT=57,a4=0.7,a4T=0.07,w=1,ct=1e7/l=2/rtorSL_int.dat"   d41=c2,c4
+        
+		data "Veff_tau/17-B=57,BT=57,a4=0.7,a4T=0.07,w=1,ct=1e7/l=3/rtorSL.dat"   d50=c2,c3 
+		data "Veff_tau/17-B=57,BT=57,a4=0.7,a4T=0.07,w=1,ct=1e7/l=3/rtorSL_int.dat"   d51=c2,c3
+        
+		data "Veff_tau/17-B=57,BT=57,a4=0.7,a4T=0.07,w=1,ct=1e7/l=3/rtorSL.dat"   d60=c2,c4 
+		data "Veff_tau/17-B=57,BT=57,a4=0.7,a4T=0.07,w=1,ct=1e7/l=3/rtorSL_int.dat"   d61=c2,c4
+
+		yaxis min 0 max 1 dticks .20 hei .5
+		xaxis min -60 max 140 dticks 30 hei .5
+        ytitle "$(GM)^2 V_{eff}$"  hei .5
+		xtitle "$r_*$ (km)" hei .5
+
+		d30 line lstyle 1 lwidth 0.06 color red
+        d31 line lstyle 1 lwidth 0.06 color red
+        
+		d40 line lstyle 2 lwidth 0.06 color blue
+        d41 line lstyle 2 lwidth 0.06 color blue
+
+        d50 line lstyle 3 lwidth 0.06 color magenta
+        d51 line lstyle 3 lwidth 0.06 color magenta
+        
+		d60 line lstyle 4 lwidth 0.06 color green
+        d61 line lstyle 4 lwidth 0.06 color green
+
+		!key pos tl hei 0.4
+end graph 
+!marker circle msize 0.2 
+
+begin key
+position tr
+hei .35
+ nobox
+   line lstyle 1 lwidth 0.06 color red             text "$l=2$ w/ SL correction"
+   line lstyle 2 lwidth 0.06 color blue             text "$l=2$ w/out SL correction"
+
+   line lstyle 3 lwidth 0.06 color magenta             text "$l=3$ w/ SL correction"
+   line lstyle 4 lwidth 0.06 color green             text "$l=3$ w/out SL correction"
+end key
+
+begin key
+position br
+hei .35
+ nobox
+  text "(b)"
+end key
